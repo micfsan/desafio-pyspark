@@ -47,7 +47,7 @@ pip install -r requirements.txt
 Para executar o processamento e gerar o relatório final:
 ```
 export PYTHONPATH=$PYTHONPATH:$(pwd)/src
-    python3 src/main.py 
+python3 src/main.py 
 ```
 
 # 🧪 Testes Automatizados
