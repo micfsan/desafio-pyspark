@@ -35,10 +35,11 @@ Java: 8 ou 11 (necessário para o PySpark)
 
 Datasets: Clonados na pasta data/input/
 
-## 🚀 Como Executar
+# 🚀 Como Executar
 1. Instalar Dependências
 
-```pip install -r requirements.txt```
+```pip install -r requirements.txt
+```
 
 2. Rodar o Pipeline
 
@@ -47,21 +48,21 @@ Para executar o processamento e gerar o relatório final:
 python3 src/main.py
 ```
 
-##🧪 Testes Automatizados
+#🧪 Testes Automatizados
 Para garantir que a lógica de negócio está correta, execute:
 
 ```export PYTHONPATH=$PYTHONPATH:$(pwd)
 pytest tests/test_transformations.py
 ```
 
-##📦 Empacotamento
+#📦 Empacotamento
 Para gerar o arquivo distribuível .whl:
 
 Limpar builds antigos: rm -rf dist/ build/ *.egg-info
 
 Gerar o pacote: python3 -m build
 
-##📋 Requisitos Atendidos
+#📋 Requisitos Atendidos
 [x] Schemas Explícitos: StructTypes definidos manualmente.
 
 [x] POO & Injeção de Dependência: Estrutura modular e testável.
