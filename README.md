@@ -1,73 +1,77 @@
-# 🚀 Data Engineering PySpark - Desafio de Vendas 2025
+# 🚀 PySpark Data Pipeline - Desafio Vendas 2025
+Este projeto consiste em um pipeline de dados desenvolvido em PySpark para processamento de grandes volumes de transações. O objetivo é identificar pedidos de 2025 que foram recusados pelo gateway de pagamento, mas classificados como legítimos pelo sistema de antifraude.
 
-Este projeto é um pipeline de dados robusto desenvolvido em **PySpark**, utilizando as melhores práticas de **Engenharia de Software**, como Programação Orientada a Objetos (POO), Injeção de Dependências, Logging profissional e Testes Unitários.
+🏗️ Arquitetura e Padrões (S.O.L.I.D.)
+O projeto foi construído seguindo rigorosos padrões de engenharia de software:
 
-O objetivo principal é gerar um relatório de pedidos de venda de **2025** cujos pagamentos foram **recusados**, mas que a avaliação de fraude classificou como **legítimos**.
+POO (Orientação a Objetos): Toda a lógica encapsulada em classes modulares.
 
+Injeção de Dependências: O main.py atua como Aggregation Root, instanciando e injetando dependências.
+
+Schemas Explícitos: Definição manual de StructType para todos os DataFrames (Zero inferência).
+
+Agnóstico: Configurações centralizadas em YAML, permitindo execução em qualquer ambiente.
 ---
 
-## 🛠️ Estrutura do Projeto
+# 📋 Pré-requisitos
+Antes de iniciar, certifique-se de que seu ambiente possui:
+
+Python: Versão 3.8 ou superior.
+
+Java (JDK): Versão 11 ou 17 (Obrigatório para o funcionamento do Apache Spark).
+
+Apache Spark: Versão 3.3.0 ou superior instalada e configurada no PATH.
+
+Datasets: Arquivos de entrada localizados em ./data/input/ (Pedidos em CSV.gz e Pagamentos em JSON.gz).
+
+
+## 📂 Estrutura de Pastas
 
 ```text
 .
-├── config/
-│   └── settings.yaml          # Configurações de caminhos e Spark
-├── data/
-│   └── input/                 # Datasets de Pedidos e Pagamentos
-├── dist/                      # Pacote distribuível (.whl)
-├── src/
-│   ├── config/                # Carregamento de configurações
-│   ├── io_utils/              # Leitura (CSV/JSON) e Escrita (Parquet)
-│   ├── pipeline/              # Orquestrador (Fluxo de execução)
-│   ├── processing/            # Regras de Negócio e Transformações
-│   ├── session/               # Gerenciamento da SparkSession
-│   └── main.py                # Ponto de entrada (Aggregation Root)
-├── tests/                     # Testes automatizados com Pytest
-├── pyproject.toml             # Metadados de empacotamento
-└── requirements.txt           # Dependências do projeto
+├── config/             # Configurações centralizadas (settings.yaml)
+├── data/               # Camadas de dados (Input/Output)
+├── src/                # Código-fonte organizado em pacotes
+│   ├── config/         # Classe de carregamento de YAML
+│   ├── io_utils/       # I/O com Schemas e Escrita em Parquet
+│   ├── processing/     # Lógica de Negócio (Transformações)
+│   ├── session/        # Gerenciamento da SparkSession
+│   └── main.py         # Ponto de entrada da aplicação
+├── tests/              # Testes unitários com Pytest
+└── pyproject.toml      # Configuração de empacotamento (.whl)
 
 ````
 
-# ⚙️ Pré-requisitos
-Python: 3.8+
-
-Java: 8 ou 11 (necessário para o PySpark)
-
-Datasets: Clonados na pasta data/input/
-
 # 🚀 Como Executar
 1. Instalar Dependências
-
 ```
 pip install -r requirements.txt
 ```
 
-2. Rodar o Pipeline
+2. Gerar o Pacote (Build)
+Transforme o código em um pacote distribuível profissional:
+```
+python3 -m build
+```
 
-Para executar o processamento e gerar o relatório final:
+3. Executar o Pipeline (Spark-Submit)
+Rode o processamento utilizando o pacote gerado:
+```
+spark-submit --master "local[*]" \--py-files dist/*.whl \src/main.py
+```
+
+# 🧪 Qualidade e Testes
+Para validar as regras de negócio e a integridade dos dados:
 ```
 export PYTHONPATH=$PYTHONPATH:$(pwd)/src
-python3 src/main.py 
-```
-
-# 🧪 Testes Automatizados
-Para garantir que a lógica de negócio está correta, execute:
-
-```
-export PYTHONPATH=$PYTHONPATH:$(pwd)
 pytest tests/test_transformations.py
 ```
 
-# 📦 Empacotamento
-Para gerar o arquivo distribuível .whl:
+📊 Entrega Técnica
+Formato de Saída: Parquet (Colunar).
 
-Limpar builds antigos: ```rm -rf dist/ build/ *.egg-info```
+Ordenação: UF, Forma de Pagamento e Data do Pedido.
 
-Gerar o pacote: ```python3 -m build```
+Logging: Monitoramento completo via logging.INFO.
 
-# 📋 Requisitos Atendidos
-[x] Schemas Explícitos: StructTypes definidos manualmente.
-
-[x] POO & Injeção de Dependência: Estrutura modular e testável.
-
-[x] Logging & Erros: Monitoramento completo do pipeline.
+Tratamento de Erros: Blocos try/except em todas as camadas críticas.

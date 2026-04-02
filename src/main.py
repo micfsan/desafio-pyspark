@@ -1,9 +1,12 @@
 import logging
-from config.settings import load_config
+import sys
+import os
+
+from config.settings import ConfigManager
 from session.spark_session import SparkManager
 from io_utils.data_handler import DataHandler
-from pipeline.pipeline import FraudPipeline
 from processing.transformations import Transformation
+from pipeline.pipeline import FraudPipeline
 
 
 def setup_logging():
