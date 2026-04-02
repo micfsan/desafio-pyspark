@@ -3,7 +3,7 @@ from config.settings import load_config
 from session.spark_session import SparkManager
 from io_utils.data_handler import DataHandler
 from pipeline.pipeline import FraudPipeline
-from processing.transformations import Transformation  # Já está correto aqui
+from processing.transformations import Transformation
 
 
 def setup_logging():
@@ -15,19 +15,20 @@ def setup_logging():
 
 def main():
     setup_logging()
-    config = load_config()
+    config_manager = ConfigManager()
+    config = config_manager.get_config()# 1. Classe de Configuração
 
-    # Instanciando dependências
+    # 2. Instanciando dependência de Sessão Spark
     spark_man = SparkManager(config["spark"]["app_name"])
     spark = spark_man.get_session()
-
+    
+    # 3. Instanciando dependência de Leitura e Escrita (I/O)
     dh = DataHandler(spark)
     
-    # AJUSTE 1: Mudar de BusinessLogic() para Transformation()
+   # 4. Instanciando dependência de Lógica de Negócios
     logic = Transformation()
 
-    # AJUSTE 2: Garantir que a variável 'logic' (agora uma instância de Transformation)
-    # seja injetada corretamente no Pipeline
+    # 5. INJEÇÃO DE DEPENDÊNCIAS: Injetando dh e logic no Pipeline (Orquestrador)
     pipeline = FraudPipeline(spark, dh, logic)
 
     try:
