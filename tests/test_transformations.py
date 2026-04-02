@@ -14,7 +14,6 @@ def spark_session():
     yield spark
     spark.stop()
 
-# --- TESTES DA LÓGICA DE NEGÓCIO ---
 
 def test_filter_legit_refused_2025(spark_session):
     """

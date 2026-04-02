@@ -67,7 +67,7 @@ export PYTHONPATH=$PYTHONPATH:$(pwd)/src
 pytest tests/test_transformations.py
 ```
 
-📊 Entrega Técnica
+# 📊 Entrega Técnica
 Formato de Saída: Parquet (Colunar).
 
 Ordenação: UF, Forma de Pagamento e Data do Pedido.
