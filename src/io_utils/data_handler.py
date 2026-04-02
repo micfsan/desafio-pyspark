@@ -63,5 +63,10 @@ class DataHandler:
         )
 
     def write_output(self, df: DataFrame, path: str):
-        logger.info(f"Escrevendo resultado em Parquet: {path}")
-        df.write.mode("overwrite").parquet(path)
+        try:
+            logger.info(f"Salvando resultado em Parquet: {path}")
+            df.write.mode("overwrite").parquet(path)
+            logger.info("Arquivo Parquet gerado com sucesso.")
+        except Exception as e:
+            logger.error(f"Erro na escrita dos dados: {e}")
+            raise e
