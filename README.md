@@ -11,7 +11,6 @@ Injeção de Dependências: O main.py atua como Aggregation Root, instanciando e
 Schemas Explícitos: Definição manual de StructType para todos os DataFrames (Zero inferência).
 
 Agnóstico: Configurações centralizadas em YAML, permitindo execução em qualquer ambiente.
----
 
 # 📋 Pré-requisitos
 Antes de iniciar, certifique-se de que seu ambiente possui:
