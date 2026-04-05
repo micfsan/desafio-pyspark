@@ -30,14 +30,19 @@ Datasets: Arquivos de entrada localizados em ./data/input/ (Pedidos em CSV.gz e 
 .
 ├── config/             # Configurações centralizadas (settings.yaml)
 ├── data/               # Camadas de dados (Input/Output)
+├── dist/               # Pacotes distribuíveis (.whl) gerados no build
 ├── src/                # Código-fonte organizado em pacotes
 │   ├── config/         # Classe de carregamento de YAML
 │   ├── io_utils/       # I/O com Schemas e Escrita em Parquet
+│   ├── pipeline/       # Orquestração do fluxo de dados
 │   ├── processing/     # Lógica de Negócio (Transformações)
 │   ├── session/        # Gerenciamento da SparkSession
-│   └── main.py         # Ponto de entrada da aplicação
+│   └── main.py         # Ponto de entrada (Aggregation Root)
 ├── tests/              # Testes unitários com Pytest
-└── pyproject.toml      # Configuração de empacotamento (.whl)
+├── MANIFEST.in         # Regras de inclusão de arquivos estáticos no pacote
+├── pyproject.toml      # Metadados e configuração de build profissional
+├── requirements.txt    # Gerenciamento de dependências externas
+└── README.md           # Documentação técnica do projeto
 
 ````
 
