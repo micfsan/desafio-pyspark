@@ -39,10 +39,11 @@ Datasets: Arquivos de entrada localizados em ./data/input/ (Pedidos em CSV.gz e 
 │   ├── session/        # Gerenciamento da SparkSession
 │   └── main.py         # Ponto de entrada (Aggregation Root)
 ├── tests/              # Testes unitários com Pytest
+├── .gitignore          # Regras de exclusão de arquivos (Caches, venv, etc.)
 ├── MANIFEST.in         # Regras de inclusão de arquivos estáticos no pacote
 ├── pyproject.toml      # Metadados e configuração de build profissional
-├── requirements.txt    # Gerenciamento de dependências externas
-└── README.md           # Documentação técnica do projeto
+├── README.md           # Documentação técnica do projeto
+└──requirements.txt    # Gerenciamento de dependências externas
 
 ````
 
