@@ -37,7 +37,7 @@ Datasets: Arquivos de entrada localizados em ./data/input/ (Pedidos em CSV.gz e 
 │   ├── pipeline/       # Orquestração do fluxo de dados
 │   ├── processing/     # Lógica de Negócio (Transformações)
 │   ├── session/        # Gerenciamento da SparkSession
-│   └── main/         # Ponto de entrada (Aggregation Root)
+│   └── main.py         # Ponto de entrada (Aggregation Root)
 ├── tests/              # Testes unitários com Pytest
 ├── .gitignore          # Regras de exclusão de arquivos (Caches, venv, etc.)
 ├── MANIFEST.in         # Regras de inclusão de arquivos estáticos no pacote
