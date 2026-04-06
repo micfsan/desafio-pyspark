@@ -19,7 +19,7 @@ Python: Versão 3.8 ou superior.
 
 Java (JDK): Versão 11 ou 17 (Obrigatório para o funcionamento do Apache Spark).
 
-Apache Spark: Versão 3.3.0 ou superior instalada e configurada no PATH.
+Apache Spark: Versão 3.5.0 ou superior instalada e configurada no PATH.
 
 Datasets: Arquivos de entrada localizados em ./data/input/ (Pedidos em CSV.gz e Pagamentos em JSON.gz).
 
